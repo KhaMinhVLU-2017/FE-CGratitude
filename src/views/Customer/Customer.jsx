@@ -61,7 +61,7 @@ class Customer extends Component {
               onOk={this.onEventModal}
             >
               <Row>
-                <Form layout='horizontal' labelCol={{ span: 4 }} wrapperCol={{ span: 8 }} >
+                <Form layout='horizontal' labelCol={{ span: 4 }} wrapperCol={{ span: 8, offset:2 }} >
                   <Form.Item label="Full Name" >
                     <Input name='txt_fullname'/>
                   </Form.Item>
