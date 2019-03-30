@@ -81,15 +81,15 @@ const Sidebar = ({ ...props }) => {
   var brand = (
     <div className={classes.logo}>
       <a
-        href="https://www.creative-tim.com"
+        href="https://www.facebook.com/NhiCosmeticCali"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
       >
         <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
+          <img style={{width:50}} src={logo} alt="logo" className={classes.img} />
         </div>
-        {logoText}
+          &ensp;{logoText}
       </a>
     </div>
   );

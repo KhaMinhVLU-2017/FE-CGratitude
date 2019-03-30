@@ -9,7 +9,7 @@ import Button from "components/CustomButtons/Button.jsx"
 import Tooltip from "@material-ui/core/Tooltip"
 import { Modal as ModalAnt } from 'antd'
 import {
-  Form, Row, Col, Input, Icon, DatePicker
+  Form, Row, Input, DatePicker
 } from 'antd'
 
 // style
