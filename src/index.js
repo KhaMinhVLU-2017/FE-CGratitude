@@ -16,7 +16,8 @@ ReactDOM.render(
     <Switch>
       <Route path="/admin" component={Admin} />
       <Route path="/rtl" component={RTL} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/" component={Admin} />
+      {/* <Redirect from="/" to="/admin/dashboard" /> config lai de push len git deploy */}
     </Switch>
   </Router>,
   document.getElementById("root")
