@@ -9,7 +9,7 @@ import Button from "components/CustomButtons/Button.jsx"
 import Tooltip from "@material-ui/core/Tooltip"
 import { Modal as ModalAnt } from 'antd'
 import {
-  Form, Row, Input, DatePicker
+  Form, Row, Input, DatePicker, Col
 } from 'antd'
 
 // style
@@ -61,20 +61,30 @@ class Customer extends Component {
               onOk={this.onEventModal}
             >
               <Row>
-                <Form layout='horizontal' labelCol={{ span: 4 }} wrapperCol={{ span: 8, offset:2 }} >
-                  <Form.Item label="Full Name" >
-                    <Input name='txt_fullname'/>
-                  </Form.Item>
-                  <Form.Item label="Phone Number" >
-                    <Input name='txt_phone'/>
-                  </Form.Item>
-                  <Form.Item label="Birthday" >
-                    <DatePicker name='txt_date' placeholder="Select Birthday" />
-                  </Form.Item>
-                  <Form.Item label="Email" >
-                    <Input name='txt_email' />
-                  </Form.Item>
-                </Form>
+                <Row>
+                  <Col span={12}>
+                    <Form.Item label="Full Name" >
+                      <Input name='txt_fullname' />
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item label="Phone Number" >
+                      <Input name='txt_phone' />
+                    </Form.Item>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={12}>
+                    <Form.Item label="Birthday" >
+                      <DatePicker name='txt_date' placeholder="Select Birthday" />
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item label="Email" >
+                      <Input name='txt_email' />
+                    </Form.Item>
+                  </Col>
+                </Row>
               </Row>
             </ModalAnt>
           </GridItem>
