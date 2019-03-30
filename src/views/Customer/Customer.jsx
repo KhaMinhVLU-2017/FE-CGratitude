@@ -1,79 +1,108 @@
-import React, { Component } from 'react'
-import GridContainer from '../../components/Grid/GridContainer'
+import React, { Component, Fragment } from 'react'
+import Grid from "@material-ui/core/Grid";
 import GridItem from '../../components/Grid/GridItem'
-import CustomInput from '../../components/CustomInput/CustomInput'
-import InputAdornment from "@material-ui/core/InputAdornment"
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-// @material-ui/icons
-import People from "@material-ui/icons/People"
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import Muted from "components/Typography/Muted.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import Info from "components/Typography/Info.jsx";
-import AttachMoney from "@material-ui/icons/AttachMoney"
-import Person from "@material-ui/icons/Person"
+import Card from '../../components/Card/Card'
+import CardHeader from '../../components/Card/CardHeader'
+import CardBody from '../../components/Card/CardBody'
+import Table from "components/Table/Table.jsx"
+import Button from "components/CustomButtons/Button.jsx"
+import Tooltip from "@material-ui/core/Tooltip"
+import { Modal as ModalAnt } from 'antd'
 import {
-	cardTitle,
-	cardSubtitle,
-	cardLink
-} from "assets/jss/material-dashboard-react.jsx"
+  Form, Row, Col, Input, Icon, DatePicker
+} from 'antd'
 
-const styles = {
-	cardTitle,
-	cardSubtitle,
-	cardLink
+// style
+import withStyles from "@material-ui/core/styles/withStyles"
+import People from "@material-ui/icons/People"
+import Add from '@material-ui/icons/Add'
+import * as myFunc from '../../func'
+
+var styles = {
+  cardTitle: {
+    marginTop: "0",
+    minHeight: "auto",
+    fontWeight: "bold",
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    marginBottom: "3px",
+    textDecoration: "none"
+  },
+  fontButton: {
+    fontWeight: "bold",
+    fontSize: '100px'
+  }
 }
 
 class Customer extends Component {
-	render() {
-		const { classes } = this.props
-		return (
-			<GridContainer>
-				<GridItem xs={12} sm={12} md={12}>
-					<CustomInput
-						labelText="Find Customer by Phone"
-						id="material"
-						formControlProps={{
-							fullWidth: true
-						}}
-						inputProps={{
-							endAdornment: (
-								<InputAdornment position="end">
-									<People />
-								</InputAdornment>
-							)
-						}}
-					/>
-				</GridItem>
-				<GridItem xs={12} sm={12} md={12}>
-					<Card style={{ width: "20rem" }}>
-						<CardBody>
-							<h4 className={classes.cardTitle}><Info><h3><strong>Nguyễn Tô Yến Nhi</strong></h3></Info></h4>
-							<Muted>
-								<h6 className={classes.cardSubtitle}>Customer</h6>
-							</Muted>
-							<p>
-								<strong>Poin Transfer : </strong> <span>2</span>
-							</p>
-							<p>
-								<strong>Poin Total: </strong> <span>150</span>
-							</p>
-							<GridContainer>
-								<GridItem xs={6} sm={6} md={6}>
-									<Button type='button' style={{width:130}} color='rose' round><AttachMoney />Add Poin</Button>
-								</GridItem>
-								<GridItem xs={6} sm={6} md={6}>
-									<Button type='button' style={{width:130}} color='info' round><Person />Info</Button>
-								</GridItem>
-							</GridContainer>
-						</CardBody>
-					</Card>
-				</GridItem>
-			</GridContainer >
-		)
-	}
+  constructor(props) {
+    super(props)
+    this.state = { SModal: false }
+    this.onEventModal = this.onEventModal.bind(this)
+  }
+  onEventModal() {
+    this.setState({ SModal: !this.state.SModal })
+  }
+  render() {
+    const { classes } = this.props
+    return (
+      <Fragment>
+        <Grid>
+          <GridItem xs={12} sm={12} md={6}>
+            <Tooltip id="tooltip-top"
+              title="Add Customer"
+              placement="top"
+              classes={{ tooltip: classes.tooltip }}>
+              <Button className={classes.fontButton} onClick={this.onEventModal} justIcon round color="primary"><Add /></Button>
+            </Tooltip>
+            <ModalAnt
+              title={<h3><People /> Add New Customer</h3>}
+              visible={this.state.SModal}
+              onCancel={this.onEventModal}
+              onOk={this.onEventModal}
+            >
+              <Row>
+                <Form layout='horizontal' labelCol={{ span: 4 }} wrapperCol={{ span: 8 }} >
+                  <Form.Item label="Full Name" >
+                    <Input name='txt_fullname'/>
+                  </Form.Item>
+                  <Form.Item label="Phone Number" >
+                    <Input name='txt_phone'/>
+                  </Form.Item>
+                  <Form.Item label="Birthday" >
+                    <DatePicker name='txt_date' placeholder="Select Birthday" />
+                  </Form.Item>
+                  <Form.Item label="Email" >
+                    <Input name='txt_email' />
+                  </Form.Item>
+                </Form>
+              </Row>
+            </ModalAnt>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={6}>
+            <Card>
+              <CardHeader color="danger">
+                <h3 className={classes.cardTitle}><People /> Customer List</h3>
+                <p>{myFunc.CorvertDateMeo(new Date())}</p>
+              </CardHeader>
+              <CardBody>
+                <Table
+                  tableHeaderColor="danger"
+                  tableHead={['ID', 'Name', 'Phone', 'Birthday']}
+                  tableData={[
+                    ['1', "Nguyễn Lí", "0937785858", "23/2"],
+                    ['2', "Nguyễn Lí", "0937785858", "23/2"],
+                    ['3', "Nguyễn Lí", "0937785858", "23/2"],
+                    ['4', "Nguyễn Lí", "0937785858", "23/2"],
+                    ['5', "Nguyễn Lí", "0937785858", "23/2"]
+                  ]}
+                />
+              </CardBody>
+            </Card>
+          </GridItem>
+        </Grid>
+      </Fragment>
+    )
+  }
 }
 
 export default withStyles(styles)(Customer)
