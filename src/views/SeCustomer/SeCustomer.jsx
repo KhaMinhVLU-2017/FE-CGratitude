@@ -33,7 +33,7 @@ class SeCustomer extends Component {
 			<GridContainer>
 				<GridItem xs={12} sm={12} md={12}>
 					<CustomInput
-						labelText="Find Customer by Phone"
+						labelText="Tìm kiếm qua số  điện thoại"
 						id="material"
 						formControlProps={{
 							fullWidth: true
@@ -52,13 +52,13 @@ class SeCustomer extends Component {
 						<CardBody>
 							<h4 className={classes.cardTitle}><Info><h3><strong>Nguyễn Tô Yến Nhi</strong></h3></Info></h4>
 							<Muted>
-								<h6 className={classes.cardSubtitle}>Customer</h6>
+								<h6 className={classes.cardSubtitle}>Thành viên</h6>
 							</Muted>
 							<p>
-								<strong>Poin Transfer : </strong> <span>2</span>
+								<strong>Số lần quy đổi: </strong> <span>2</span>
 							</p>
 							<p>
-								<strong>Poin Total: </strong> <span>150</span>
+								<strong>Tổng số điểm: </strong> <span>150</span>
 							</p>
 							<GridContainer>
 								<GridItem xs={6} sm={6} md={6}>

@@ -44,44 +44,47 @@ class Customer extends Component {
   }
   render() {
     const { classes } = this.props
+
     return (
       <Fragment>
         <Grid>
           <GridItem xs={12} sm={12} md={6}>
             <Tooltip id="tooltip-top"
-              title="Add Customer"
+              title="Thêm thành viên"
               placement="top"
               classes={{ tooltip: classes.tooltip }}>
-              <Button className={classes.fontButton} onClick={this.onEventModal} justIcon round color="primary"><Add /></Button>
+              <Button className={classes.fontButton} onClick={this.onEventModal} justIcon round color="success"><Add /></Button>
             </Tooltip>
             <ModalAnt
-              title={<h3><People /> Add New Customer</h3>}
+              title={<h3><People /> Thêm thành viên</h3>}
               visible={this.state.SModal}
               onCancel={this.onEventModal}
               onOk={this.onEventModal}
+              okText='Lưu'
+              cancelText='Hủy'
             >
               <Row>
                 <Row>
                   <Col span={12}>
-                    <Form.Item label="Full Name" >
-                      <Input name='txt_fullname' />
+                    <Form.Item label="Họ và tên" >
+                      <Input name='txt_fullname' placeholder='Nguyễn Pessi'/>
                     </Form.Item>
                   </Col>
                   <Col span={12}>
-                    <Form.Item label="Phone Number" >
-                      <Input name='txt_phone' />
+                    <Form.Item label="Điện thoại" >
+                      <Input name='txt_phone' placeholder='0937999999'/>
                     </Form.Item>
                   </Col>
                 </Row>
                 <Row>
                   <Col span={12}>
-                    <Form.Item label="Birthday" >
-                      <DatePicker name='txt_date' placeholder="Select Birthday" />
+                    <Form.Item label="Ngày sinh" >
+                      <DatePicker name='txt_date' placeholder="Chọn ngày sinh" />
                     </Form.Item>
                   </Col>
                   <Col span={12}>
                     <Form.Item label="Email" >
-                      <Input name='txt_email' />
+                      <Input name='txt_email' placeholder='pessi@gmail.com'/>
                     </Form.Item>
                   </Col>
                 </Row>
@@ -90,14 +93,14 @@ class Customer extends Component {
           </GridItem>
           <GridItem xs={12} sm={12} md={6}>
             <Card>
-              <CardHeader color="danger">
-                <h3 className={classes.cardTitle}><People /> Customer List</h3>
+              <CardHeader color="info">
+                <h3 className={classes.cardTitle}><People /> Danh sách thành viên</h3>
                 <p>{myFunc.CorvertDateMeo(new Date())}</p>
               </CardHeader>
               <CardBody>
                 <Table
-                  tableHeaderColor="danger"
-                  tableHead={['ID', 'Name', 'Phone', 'Birthday']}
+                  tableHeaderColor="info"
+                  tableHead={['STT', 'Họ & Tên', 'Điện thoại', 'Ngày sinh']}
                   tableData={[
                     ['1', "Nguyễn Lí", "0937785858", "23/2"],
                     ['2', "Nguyễn Lí", "0937785858", "23/2"],

@@ -16,6 +16,7 @@ import TableList from "views/TableList/TableList.jsx";
 //import Typography from "views/Typography/Typography.jsx";
 import SeCustomer from './views/SeCustomer/SeCustomer'
 import Customer from './views/Customer/Customer'
+import Promotion from './views/Promotion/Promotion'
 // import Icons from "views/Icons/Icons.jsx";
 // import Maps from "views/Maps/Maps.jsx";
 // import NotificationsPage from "views/Notifications/Notifications.jsx";
@@ -65,15 +66,15 @@ const dashboardRoutes = [
     icon: Search,
     component: SeCustomer,
     layout: "/admin"
-  }
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   rtlName: "الرموز",
-  //   icon: BubbleChart,
-  //   component: Icons,
-  //   layout: "/admin"
-  // },
+  },
+  {
+    path: "/Promotion",
+    name: "Promotion",
+    rtlName: "الرموز",
+    icon: Search,
+    component: Promotion,
+    layout: "/admin"
+  },
   // {
   //   path: "/maps",
   //   name: "Maps",
